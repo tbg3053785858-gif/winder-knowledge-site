@@ -6,7 +6,29 @@
   <title>锂电池卷绕机工作资料库</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="locked">
+  <section id="loginScreen" class="login-screen" aria-label="登录">
+    <form id="loginForm" class="login-panel">
+      <div class="brand login-brand">
+        <div class="brand-mark">NX</div>
+        <div>
+          <h1>锂电池卷绕机工作资料库</h1>
+          <p>请输入账号密码后查看资料</p>
+        </div>
+      </div>
+      <label>
+        <span>账号</span>
+        <input id="loginUser" type="text" autocomplete="username" required>
+      </label>
+      <label>
+        <span>密码</span>
+        <input id="loginPassword" type="password" autocomplete="current-password" required>
+      </label>
+      <button type="submit">登录查看资料</button>
+      <p id="loginMessage" class="login-message" aria-live="polite"></p>
+    </form>
+  </section>
+
   <header class="site-header">
     <div class="brand">
       <div class="brand-mark">NX</div>
@@ -19,6 +41,7 @@
       <span><b id="statTotal">0</b> 条资料</span>
       <span><b id="statAlarm">0</b> 条报警</span>
       <span><b id="statFault">0</b> 个案例</span>
+      <button id="logoutButton" class="logout-button" type="button">退出</button>
     </div>
   </header>
 

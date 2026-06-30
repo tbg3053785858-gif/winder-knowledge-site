@@ -8,6 +8,12 @@ const dataFiles = {
 
 const sourceFile = "data/source_links.json";
 
+const authConfig = {
+  username: "admin",
+  passwordHash: "1d94f93afe946ad4dbab1887609b96a09e1a0058d2a9d9cd07daad4f1c5a4ba5",
+  sessionKey: "winderKnowledgeAuth"
+};
+
 const fallbackData = {
   alarms: [
     {
@@ -47,6 +53,17 @@ const state = {
 document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
+  bindAuthEvents();
+  if (!isAuthenticated()) {
+    showLogin();
+    return;
+  }
+
+  await startApp();
+}
+
+async function startApp() {
+  unlockApp();
   await loadAllData();
   renderStats();
   renderFilterGroup("plc", state.plc, "category");
@@ -56,6 +73,54 @@ async function init() {
   renderAll();
   bindEvents();
   calculateYield();
+}
+
+function bindAuthEvents() {
+  const loginForm = document.getElementById("loginForm");
+  const logoutButton = document.getElementById("logoutButton");
+
+  loginForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const username = document.getElementById("loginUser").value.trim();
+    const password = document.getElementById("loginPassword").value;
+    const message = document.getElementById("loginMessage");
+    const isValid = username === authConfig.username && await sha256(password) === authConfig.passwordHash;
+
+    if (!isValid) {
+      message.textContent = "账号或密码错误。";
+      return;
+    }
+
+    sessionStorage.setItem(authConfig.sessionKey, "ok");
+    message.textContent = "";
+    await startApp();
+  });
+
+  logoutButton.addEventListener("click", () => {
+    sessionStorage.removeItem(authConfig.sessionKey);
+    location.reload();
+  });
+}
+
+function isAuthenticated() {
+  return sessionStorage.getItem(authConfig.sessionKey) === "ok";
+}
+
+function showLogin() {
+  document.body.classList.add("locked");
+  document.getElementById("loginScreen").removeAttribute("hidden");
+  document.getElementById("loginUser").focus();
+}
+
+function unlockApp() {
+  document.body.classList.remove("locked");
+  document.getElementById("loginScreen").setAttribute("hidden", "");
+}
+
+async function sha256(text) {
+  const bytes = new TextEncoder().encode(text);
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return Array.from(new Uint8Array(digest)).map((byte) => byte.toString(16).padStart(2, "0")).join("");
 }
 
 async function loadAllData() {
