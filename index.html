@@ -10,10 +10,10 @@
   <section id="loginScreen" class="login-screen" aria-label="登录">
     <form id="loginForm" class="login-panel">
       <div class="brand login-brand">
-        <div class="brand-mark">NX</div>
+        <span class="brand-mark">W</span>
         <div>
-          <h1>锂电池卷绕机工作资料库</h1>
-          <p>请输入账号密码后查看资料</p>
+          <strong>卷绕机资料库</strong>
+          <small>登录后查看内部资料索引</small>
         </div>
       </div>
       <label>
@@ -24,17 +24,19 @@
         <span>密码</span>
         <input id="loginPassword" type="password" autocomplete="current-password" required>
       </label>
-      <button type="submit">登录查看资料</button>
+      <button type="submit">进入资料库</button>
       <p id="loginMessage" class="login-message" aria-live="polite"></p>
     </form>
   </section>
 
-  <header class="site-header">
-    <div class="brand">
-      <div class="brand-mark">NX</div>
-      <div>
-        <h1>锂电池卷绕机工作资料库</h1>
-        <p>方形锂电池卷绕机 · Omron NX701-1600 · Sysmac Studio · 现场维修</p>
+  <header class="app-header">
+    <div class="header-main">
+      <div class="brand">
+        <span class="brand-mark">W</span>
+        <div>
+          <h1>锂电池卷绕机工作资料库</h1>
+          <p>方形锂电池卷绕机 · Omron NX701-1600 · Sysmac Studio · 现场维修</p>
+        </div>
       </div>
     </div>
     <div class="status-strip" aria-label="资料库状态">
@@ -47,6 +49,7 @@
 
   <nav class="top-nav" aria-label="主导航">
     <a href="#home">首页</a>
+    <a href="#documents">资料管理</a>
     <a href="#sources">资料来源</a>
     <a href="#plc">PLC学习区</a>
     <a href="#winding">卷绕机资料</a>
@@ -61,13 +64,18 @@
     <section id="home" class="hero-section">
       <div class="hero-copy">
         <span class="eyebrow">Factory Knowledge Base</span>
-        <h2>把现场经验、报警处理、PLC笔记整理成能快速查到的资料库。</h2>
-        <p>适合设备维修、点检、异常复盘、良率统计和新人学习。静态文件即可部署到 GitHub Pages。</p>
+        <h2>把现场经验、报警处理、PLC笔记和内部资料索引整理成能快速查到的资料库。</h2>
+        <p>适合设备维修、点检、异常复盘、良率统计和新人学习。内部原始文件不上传公网，只生成加密索引和阅读摘要。</p>
         <figure class="hero-preview">
           <img src="images/preview.png" alt="资料库网站界面预览">
         </figure>
       </div>
       <div class="quick-grid" aria-label="常用入口">
+        <a class="quick-tile" href="#documents">
+          <span class="tile-code">D00</span>
+          <strong>资料管理</strong>
+          <small>分类、筛选、手机阅读摘要</small>
+        </a>
         <a class="quick-tile" href="#alarms">
           <span class="tile-code">A01</span>
           <strong>报警代码查询</strong>
@@ -83,12 +91,32 @@
           <strong>产量良率计算</strong>
           <small>投入、良品、不良自动计算</small>
         </a>
-        <a class="quick-tile" href="#plc">
-          <span class="tile-code">P04</span>
-          <strong>PLC学习区</strong>
-          <small>IO、NPN/PNP、COM、EtherCAT</small>
-        </a>
       </div>
+    </section>
+
+    <section id="documents" class="content-section">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Document Library</span>
+          <h2>资料管理</h2>
+        </div>
+        <label class="search-box compact">
+          <span>搜索</span>
+          <input id="documentSearch" type="search" placeholder="输入标题、类别、关键词、文件类型">
+        </label>
+      </div>
+      <div class="document-toolbar">
+        <label>
+          <span>一级分类</span>
+          <select id="documentCategory"></select>
+        </label>
+        <label>
+          <span>文件类型</span>
+          <select id="documentType"></select>
+        </label>
+      </div>
+      <div id="securityNotice" class="security-notice"></div>
+      <div id="documentList" class="document-grid"></div>
     </section>
 
     <section id="sources" class="content-section">
@@ -226,9 +254,16 @@
     </section>
   </main>
 
+  <aside id="documentDetail" class="document-detail" hidden>
+    <div class="detail-panel">
+      <button id="documentDetailClose" class="detail-close" type="button" aria-label="关闭">×</button>
+      <div id="documentDetailBody"></div>
+    </div>
+  </aside>
+
   <footer>
     <span>静态资料库 · HTML + CSS + JavaScript + JSON</span>
-    <span>建议把现场新增案例持续补充到 data 目录</span>
+    <span>内部原始资料不上传公网，公开部署仅放加密索引和公开资料链接</span>
   </footer>
 
   <script src="script.js"></script>
