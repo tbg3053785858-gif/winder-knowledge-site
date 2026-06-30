@@ -1,0 +1,140 @@
+[
+  {
+    "category": "锂电设备工艺",
+    "summary": "用于建立锂电生产流程、前中后段设备、卷绕/叠片/检测工艺的全局认知。",
+    "items": [
+      {
+        "name": "EET China：锂电设备行业核心工艺",
+        "type": "行业文章",
+        "url": "https://www.eet-china.com/mp/a201779.html",
+        "note": "适合快速理解极片、电芯、模组PACK及设备段位。"
+      },
+      {
+        "name": "OFweek锂电",
+        "type": "行业门户",
+        "url": "https://libattery.m.ofweek.com/",
+        "note": "用于跟踪锂电行业资讯、设备动态和技术文章。"
+      },
+      {
+        "name": "EY：锂电池制程10大技术趋势",
+        "type": "行业报告",
+        "url": "https://www.ey.com/content/dam/ey-unified-site/ey-com/zh-cn/insights/strategy/documents/ey-10-technical-trends-of-lithium-ion-battery-industry-zh.pdf",
+        "note": "适合学习激光、极耳、分切、卷绕/叠片等制程趋势。"
+      },
+      {
+        "name": "券商锂电设备报告：锂电设备前道设备专题",
+        "type": "研究报告",
+        "url": "https://pdf.dfcfw.com/pdf/H3_AP202109221517799751_1.pdf?1654771932000.pdf=",
+        "note": "用于理解锂电设备行业划分、前中后段价值量和工艺逻辑。"
+      }
+    ]
+  },
+  {
+    "category": "卷绕机结构",
+    "summary": "用于理解卷绕机机械结构、卷针、放卷、走带、除尘、极片输送等机构思路。",
+    "items": [
+      {
+        "name": "Google Patents：锂电池卷绕机专利检索",
+        "type": "专利检索",
+        "url": "https://patents.google.com/?q=%E9%94%82%E7%94%B5%E6%B1%A0%E5%8D%B7%E7%BB%95%E6%9C%BA",
+        "note": "适合查卷绕机构、卷针、放卷、贴胶、除尘、纠偏相关公开结构。"
+      },
+      {
+        "name": "Google Patents：电池卷绕机滚动送料机构",
+        "type": "专利案例",
+        "url": "https://patents.google.com/patent/CN203474041U/en",
+        "note": "用于参考电池卷绕机送料机构的公开设计。"
+      },
+      {
+        "name": "Google Patents：锂电池卷绕机除尘结构",
+        "type": "专利案例",
+        "url": "https://patents.google.com/patent/CN215988906U/en",
+        "note": "用于参考卷绕过程极片除尘、毛刷、走带路径相关结构。"
+      },
+      {
+        "name": "博众精工：锂电设备制造业现状与未来",
+        "type": "设备厂家公开资料",
+        "url": "https://www.bozhon.com/news/info/20230306",
+        "note": "用于了解锂电设备工艺段和设备自动化方向。"
+      }
+    ]
+  },
+  {
+    "category": "PLC / 运动控制",
+    "summary": "用于学习 Omron NX701、Sysmac Studio、EtherCAT、运动控制指令和轴调试。",
+    "items": [
+      {
+        "name": "Omron NX701 手册下载页",
+        "type": "官方手册",
+        "url": "https://www.omron.com.au/products/family/3436/download/manual.html",
+        "note": "优先从 Omron 官方页面查 NX701、Sysmac Studio、Motion Control 相关手册。"
+      },
+      {
+        "name": "NJ/NX Motion Control Instructions Reference Manual",
+        "type": "官方PDF",
+        "url": "https://files.omron.eu/downloads/latest/manual/en/w508_nj_nx-series_motion_control_instructions_reference_manual_en.pdf?v=3",
+        "note": "用于查 MC_Power、MC_MoveAbsolute 等运动控制指令说明。"
+      },
+      {
+        "name": "NX/NJ Motion Control User Manual",
+        "type": "官方PDF",
+        "url": "https://edata.omron.com.au/eData/NJ/W507-E1-23.pdf",
+        "note": "用于查轴配置、同步控制、运动控制整体逻辑。"
+      }
+    ]
+  },
+  {
+    "category": "伺服 / 变频器",
+    "summary": "用于学习汇川伺服、变频器调试、报警、参数、刚性和惯量整定。",
+    "items": [
+      {
+        "name": "Inovance 官方文档下载中心",
+        "type": "官方资料",
+        "url": "https://www.inovance.com/global/support/download-documentation.html",
+        "note": "用于查 SV660、SV630、MD500 等产品手册和资料。"
+      },
+      {
+        "name": "Inovance Europe Downloads",
+        "type": "官方资料",
+        "url": "https://www.inovance.eu/downloads",
+        "note": "可作为汇川英文资料、选型资料、产品资料补充入口。"
+      },
+      {
+        "name": "SV660N Advanced User Guide",
+        "type": "伺服手册",
+        "url": "https://www.inovance.eu/fileadmin/downloads/Servo_drives_and_motors/SV660N_Advanced_User_Guide.pdf",
+        "note": "用于学习 SV660N 参数、整定、报警和调试。"
+      }
+    ]
+  },
+  {
+    "category": "CCD视觉",
+    "summary": "用于学习相机、镜头、光源、外观检测、线扫和视觉误判分析。",
+    "items": [
+      {
+        "name": "KEYENCE：Machine Vision Basics",
+        "type": "视觉基础",
+        "url": "https://www.keyence.com/ss/products/vision/visionbasics/",
+        "note": "适合建立工业视觉、相机、镜头、光源的基础概念。"
+      },
+      {
+        "name": "KEYENCE：Lighting Selection Guide",
+        "type": "光源学习",
+        "url": "https://www.keyence.com/products/vision/resources/vision-resources/basics-of-lighting-selection.jsp",
+        "note": "用于学习背光、同轴、漫射、暗场等光源选择。"
+      },
+      {
+        "name": "KEYENCE：Selecting Lens and Lighting",
+        "type": "镜头/光源",
+        "url": "https://www.keyence.com/ss/products/vision/visionbasics/tips/primer2/",
+        "note": "用于理解目标材质、检测目的与镜头光源配置关系。"
+      },
+      {
+        "name": "KEYENCE：Appearance Inspection",
+        "type": "外观检测",
+        "url": "https://www.keyence.com/ss/products/vision/visionbasics/basic/exterior/",
+        "note": "用于学习污渍、划伤、异物、缺陷类外观检测。"
+      }
+    ]
+  }
+]

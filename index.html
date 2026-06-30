@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>锂电池卷绕机工作资料库</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <div class="brand-mark">NX</div>
+      <div>
+        <h1>锂电池卷绕机工作资料库</h1>
+        <p>方形锂电池卷绕机 · Omron NX701-1600 · Sysmac Studio · 现场维修</p>
+      </div>
+    </div>
+    <div class="status-strip" aria-label="资料库状态">
+      <span><b id="statTotal">0</b> 条资料</span>
+      <span><b id="statAlarm">0</b> 条报警</span>
+      <span><b id="statFault">0</b> 个案例</span>
+    </div>
+  </header>
+
+  <nav class="top-nav" aria-label="主导航">
+    <a href="#home">首页</a>
+    <a href="#sources">资料来源</a>
+    <a href="#plc">PLC学习区</a>
+    <a href="#winding">卷绕机资料</a>
+    <a href="#faults">故障知识库</a>
+    <a href="#alarms">报警查询</a>
+    <a href="#ccd">CCD资料</a>
+    <a href="#yield">产量良率</a>
+    <a href="#search">搜索</a>
+  </nav>
+
+  <main>
+    <section id="home" class="hero-section">
+      <div class="hero-copy">
+        <span class="eyebrow">Factory Knowledge Base</span>
+        <h2>把现场经验、报警处理、PLC笔记整理成能快速查到的资料库。</h2>
+        <p>适合设备维修、点检、异常复盘、良率统计和新人学习。静态文件即可部署到 GitHub Pages。</p>
+        <figure class="hero-preview">
+          <img src="images/preview.png" alt="资料库网站界面预览">
+        </figure>
+      </div>
+      <div class="quick-grid" aria-label="常用入口">
+        <a class="quick-tile" href="#alarms">
+          <span class="tile-code">A01</span>
+          <strong>报警代码查询</strong>
+          <small>按编号、名称、原因快速检索</small>
+        </a>
+        <a class="quick-tile" href="#faults">
+          <span class="tile-code">F02</span>
+          <strong>故障知识库</strong>
+          <small>现象、原因、处理、案例</small>
+        </a>
+        <a class="quick-tile" href="#yield">
+          <span class="tile-code">Y03</span>
+          <strong>产量良率计算</strong>
+          <small>投入、良品、不良自动计算</small>
+        </a>
+        <a class="quick-tile" href="#plc">
+          <span class="tile-code">P04</span>
+          <strong>PLC学习区</strong>
+          <small>IO、NPN/PNP、COM、EtherCAT</small>
+        </a>
+      </div>
+    </section>
+
+    <section id="sources" class="content-section">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Source Map</span>
+          <h2>资料来源导航</h2>
+        </div>
+      </div>
+      <div id="sourceList" class="source-list"></div>
+    </section>
+
+    <section id="plc" class="content-section">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">PLC Notes</span>
+          <h2>PLC学习区</h2>
+        </div>
+        <div class="filter-bar" data-filter-group="plc"></div>
+      </div>
+      <div id="plcList" class="note-grid"></div>
+    </section>
+
+    <section id="winding" class="content-section">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Winding Machine</span>
+          <h2>卷绕机资料区</h2>
+        </div>
+        <div class="filter-bar" data-filter-group="winding"></div>
+      </div>
+      <div id="windingList" class="note-grid"></div>
+    </section>
+
+    <section id="faults" class="content-section">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Troubleshooting</span>
+          <h2>故障知识库</h2>
+        </div>
+        <div class="filter-bar" data-filter-group="fault"></div>
+      </div>
+      <div id="faultList" class="fault-list"></div>
+    </section>
+
+    <section id="alarms" class="content-section">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Alarm Lookup</span>
+          <h2>报警代码查询</h2>
+        </div>
+        <label class="search-box compact">
+          <span>查询</span>
+          <input id="alarmSearch" type="search" placeholder="输入报警编号、名称、原因">
+        </label>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>报警编号</th>
+              <th>报警名称</th>
+              <th>原因</th>
+              <th>解决方法</th>
+            </tr>
+          </thead>
+          <tbody id="alarmTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="ccd" class="content-section">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">CCD Inspection</span>
+          <h2>CCD资料</h2>
+        </div>
+        <div class="filter-bar" data-filter-group="ccd"></div>
+      </div>
+      <div id="ccdList" class="note-grid"></div>
+    </section>
+
+    <section id="yield" class="content-section">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Yield Calculator</span>
+          <h2>产量良率计算</h2>
+        </div>
+      </div>
+      <div class="calculator-layout">
+        <form id="yieldForm" class="calc-panel">
+          <label>
+            <span>投入数</span>
+            <input id="inputTotal" type="number" min="0" value="1000">
+          </label>
+          <label>
+            <span>良品数</span>
+            <input id="inputGood" type="number" min="0" value="982">
+          </label>
+          <label>
+            <span>不良数</span>
+            <input id="inputBad" type="number" min="0" value="18">
+          </label>
+          <button type="submit">计算良率</button>
+        </form>
+        <div class="yield-result" aria-live="polite">
+          <div>
+            <span>良率</span>
+            <strong id="yieldRate">98.20%</strong>
+          </div>
+          <div>
+            <span>不良率</span>
+            <strong id="badRate">1.80%</strong>
+          </div>
+          <div>
+            <span>数量校验</span>
+            <strong id="yieldCheck">一致</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="search" class="content-section">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Global Search</span>
+          <h2>资料搜索功能</h2>
+        </div>
+        <label class="search-box">
+          <span>关键词</span>
+          <input id="globalSearch" type="search" placeholder="例如：纠偏、COM、CCD NG、张力、报警">
+        </label>
+      </div>
+      <div id="searchResults" class="search-results"></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>静态资料库 · HTML + CSS + JavaScript + JSON</span>
+    <span>建议把现场新增案例持续补充到 data 目录</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
